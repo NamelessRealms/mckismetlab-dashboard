@@ -1,0 +1,59 @@
+.launcherLayout {
+    width: 100%;
+    padding: 20px 40px;
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--dark-03-color);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        padding-right: 5px;
+
+        .navbarLeft {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .link {
+                padding: 20px 25px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                .linkText {
+                    font-size: 16px;
+                    color: var(--white-02-color);
+                }
+            }
+
+            .link:hover .linkText {
+                color: #fff;
+            }
+
+            .linkHover {
+                background-color: rgba(255, 255, 255, 0.08);
+                .childrenTitle {
+                    color: #fff;
+                }
+            }
+        }
+
+        .navbarRight {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .selectServerDropMenu {
+                max-width: 250px;
+                width: 250px;
+            }
+
+            .releaseButton {
+                margin-right: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    }
+}

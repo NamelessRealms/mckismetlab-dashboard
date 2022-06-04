@@ -1,0 +1,58 @@
+.launcherAssets {
+    .launcherAssetsTitle {
+        color: #fff;
+        text-align: center;
+        margin: 50px 0px;
+        font-size: 32px;
+    }
+
+    .servers {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .server {
+            margin: 0px 20px;
+            width: 250px;
+
+            .serverTop {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 150px;
+                border-radius: 10px;
+                background-color: var(--dark-03-color);
+
+                .serverImg {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+
+                    .serverImgText {
+                        color: #fff;
+                        font-size: 28px;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .serverBottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 15px;
+
+                .serverTitle {
+                    width: 150px;
+                    font-size: 16px;
+                    color: var(--white-02-color);
+                }
+            }
+        }
+    }
+}

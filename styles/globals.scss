@@ -1,0 +1,116 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    overflow-x: hidden;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-family: Roboto, Arial, sans-serif, --font-chinese-traditional;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: #16181c;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #979797;
+}
+
+html::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-01-color: #121212;
+  --dark-02-color: #1B1B1B;
+  --dark-03-color: #232323;
+  --blue-01-color: #1C2230;
+  --blue-02-color: #14213D;
+  --blue-03-color: #5865F2;
+  --blue-04-color: #4655F4;
+  --orange-01-color: #E0760F;
+  --orange-02-color: #CA6707;
+  --orange-03-color: #FCA311;
+  --white-01-color: #BDBDBD;
+  --white-02-color: #D3D3D3;
+  --white-03-color: #E9E9E9;
+
+  --font-chinese-traditional: {
+      Whitney,
+      "Microsoft JhengHei",
+      微軟正黑體,
+      "Microsoft JhengHei UI",
+      "Microsoft YaHei",
+      微軟雅黑,
+      宋体,
+      SimSun,
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif
+  }
+}
+
+hr {
+  width: 100%;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  margin: 24px 0px;
+}
+
+// bootstrap scss
+
+.form-label {
+  color: var(--white-01-color);
+  font-size: 15px;
+}
+
+// bootstrap form
+.form-control, .form-select {
+  background-color: var(--dark-01-color);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  border: 2px solid transparent;
+
+  // textarea style
+  overflow-y: hidden;
+}
+
+.form-control:hover, .form-select:hover {
+  border: 2px solid var(--blue-04-color);
+}
+
+.form-control:focus, .form-select:focus {
+  color: #fff;
+  background-color: var(--dark-01-color);
+  border: 2px solid var(--blue-04-color);
+  box-shadow: 0 0 0 0.25rem rgb(70 114 244 / 25%);
+}
+
+.form-control::placeholder {
+  color: var(--white-01-color);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none; 
+  margin: 0;
+}

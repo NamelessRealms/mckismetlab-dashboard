@@ -1,0 +1,221 @@
+.launcherAssetsModule {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+
+    .modalCustomizeTitleDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .modalCustomizeTitleDiv_l {
+            .modalCustomizeTitle {
+                color: #fff;
+                font-size: 22px;
+            }
+        }
+        
+        .modalCustomizeTitleDiv_r {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+
+    .editModuleBlock_1 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .editModuleBlock_1_moduleTypeDropMenu {
+            width: 200px;
+        }
+
+        .editModuleBlock_2_moduleTypeDropMenu {
+            width: 150px;
+        }
+    }
+
+    .editModuleBlock_2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .editModuleModuleBlockDownloadUrlInput {
+        position: relative;
+    }
+
+    .container {
+        padding: 20px 40px;
+
+        .launcherAssetsTitle {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .launcherAssetsDescriptionText {
+            color: var(--white-01-color);
+            font-size: 16px;
+        }
+
+        .blockTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .blockTitleDiv {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .blockTitleDivToggle {
+                width: 58px;
+                height: 32px;
+                margin-right: 20px;
+            }
+        }
+
+        .block_1 {
+            margin-top: 40px;
+            background-color: var(--dark-03-color);
+            border-radius: 10px;
+            width: 100%;
+            padding: 20px;
+
+            .block_1_container {
+                position: relative;
+
+                .block_1_dropMenu {
+                    height: 50px;
+                }
+
+                .moduleAdd {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    background-color: var(--dark-02-color);
+                    border-radius: 10px;
+                    border: 2px solid transparent;
+                    transition: all 0.15s ease-in-out;
+                    cursor: pointer;
+
+                    .moduleAddTitle {
+                        color: #fff;
+                        font-size: 20px;
+                    }
+
+                    .icon {
+                        width: 30px;
+                        height: auto;
+                        cursor: pointer;
+                        color: var(--white-02-color);
+                        transition: all 0.15s ease-in-out;
+                    }
+                    .icon:hover {
+                        color: #fff;
+                    }
+                }
+
+                .moduleAdd:hover {
+                    background-color: var(--dark-01-color);
+                    border: 2px solid var(--blue-04-color);
+                }
+
+                .moduleAdd:hover .icon {
+                    color: #fff;
+                }
+
+                .moduleItemDiv {
+                    margin-top: 10px;
+                    background-color: var(--dark-02-color);
+                    border-radius: 10px;
+                    padding: 20px;
+
+                    .moduleItemDivTitleDiv {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .moduleItemDivTitle {
+                            color: #fff;
+                            font-size: 20px;
+                        }
+                        .moduleItemDivNumber {
+                            color: var(--white-02-color);
+                            font-size: 20px;
+                        }
+                    }
+
+                    .moduleItems {
+                        max-height: 1000px;
+                        overflow-y: auto;
+
+                        .moduleItem {
+                            background-color: var(--dark-01-color);
+                            border-radius: 10px;
+                            padding: 20px;
+                            border: 2px solid transparent;
+                            transition: all 0.15s ease-in-out;
+                            cursor: pointer;
+                            margin-right: 5px;
+                            margin-bottom: 8px;
+
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .moduleItemLeft {
+                                flex: 2;
+
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+
+                                .moduleItemTitle {
+                                    width: 300px;
+                                    color: #fff;
+                                    font-size: 18px;
+                                }
+                            }
+
+                            .moduleItemRight {
+                                // flex: 1;
+
+                                .icon {
+                                    margin-left: 10px;
+                                    width: 30px;
+                                    height: auto;
+                                    cursor: pointer;
+                                    color: var(--white-02-color);
+                                    transition: all 0.15s ease-in-out;
+                                }
+                                .icon:hover {
+                                    color: #fff;
+                                }
+                            }
+                        }
+
+                        .moduleItem:hover {
+                            border: 2px solid var(--blue-04-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.module::-webkit-scrollbar, .moduleItems::-webkit-scrollbar {
+    width: 8px;
+}
+
+.module::-webkit-scrollbar-thumb, .moduleItems::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #979797;
+}
+
+.module::-webkit-scrollbar-track, .moduleItems::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}

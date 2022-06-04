@@ -1,0 +1,51 @@
+.loader {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+
+    .container {
+        padding: 20px 40px;
+
+        .launcherAssetsTitle {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .launcherAssetsDescriptionText {
+            color: var(--white-01-color);
+            font-size: 16px;
+        }
+
+        .blockTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .blockTitleDiv {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .blockTitleDivToggle {
+                width: 58px;
+                height: 32px;
+                margin-right: 20px;
+            }
+        }
+
+        .block_1 {
+            margin-top: 40px;
+            background-color: var(--dark-03-color);
+            border-radius: 10px;
+            width: 100%;
+            padding: 20px;
+
+            .block_1_container {
+                position: relative;
+
+                .block_1_dropMenu {
+                    height: 50px;
+                }
+            }
+        }
+    }
+}

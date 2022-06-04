@@ -1,0 +1,60 @@
+.launcherAssetsJava {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+
+    .container {
+        padding: 20px 40px;
+
+        .launcherAssetsTitle {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .launcherAssetsDescriptionText {
+            color: var(--white-01-color);
+            font-size: 16px;
+        }
+
+        .blockTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .block_1 {
+            margin-top: 40px;
+            background-color: var(--dark-03-color);
+            border-radius: 10px;
+            width: 100%;
+            padding: 20px;
+
+            .blockTitleDiv {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .block_1_systemDropMenu {
+                    min-width: 200px;
+                }
+            }
+
+            .block_1_1 {
+                display: flex;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+.launcherAssetsJava::-webkit-scrollbar {
+    width: 8px;
+}
+
+.launcherAssetsJava::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #979797;
+}
+
+.launcherAssetsJava::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}

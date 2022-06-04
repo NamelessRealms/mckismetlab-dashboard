@@ -1,0 +1,270 @@
+.launcherAssetsGeneral {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+
+    .modalCustomizeTitleDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .modalCustomizeTitleDiv_l {
+            .modalCustomizeTitle {
+                color: #fff;
+                font-size: 22px;
+            }
+        }
+        
+        .modalCustomizeTitleDiv_r {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+
+    .modalCustomizeButton {
+        display: flex;
+        align-items: center;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+    }
+
+    .container {
+        padding: 20px 40px;
+
+        .launcherAssetsGeneralTitle {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .launcherAssetsGeneralDescription {
+            color: var(--white-01-color);
+            font-size: 16px;
+        }
+
+        .serverBlockTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .serverDescription,
+        .serverType,
+        .whitelist {
+            margin-top: 40px;
+            background-color: var(--dark-03-color);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .serverDescription {
+            .serverDescriptionTop {
+                display: flex;
+                justify-content: flex-start;
+
+                .sdt_l {
+                    height: 100%;
+                    margin-right: 30px;
+                    padding: 20px;
+                    border-radius: 10px;
+                    background-color: var(--dark-02-color);
+
+                    .serverImgDiv {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 140px;
+                        height: 140px;
+                        border-radius: 50%;
+                        border: 2px solid rgba(255, 255, 255, 0.2);
+
+                        .serverImg {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                        }
+
+                        .serverImgText {
+                            color: #fff;
+                            font-size: 28px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .sdt_r {
+                    width: 100%;
+                }
+            }
+
+            .serverDescriptionBottom {
+                margin-top: 30px;
+            }
+        }
+
+        .whitelist {
+            .whitelistTitleDiv {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .whitelistTitleDiv_l {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+
+                .whitelistTitleDiv_r {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+
+                    .whitelistTitleDiv_r_toggle {
+                        width: 58px;
+                        height: 32px;
+                        margin-right: 20px;
+                    }
+
+                    .whitelistTitleDiv_r_dropMenu {
+                        min-width: 140px;
+                    }
+                }
+            }
+
+            .whitelistAdd {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                background-color: var(--dark-02-color);
+                border-radius: 10px;
+                border: 2px solid transparent;
+                transition: all 0.15s ease-in-out;
+                cursor: pointer;
+
+                .whitelistAddTitle {
+                    color: #fff;
+                    font-size: 20px;
+                }
+
+                .icon {
+                    width: 30px;
+                    height: auto;
+                    cursor: pointer;
+                    color: var(--white-02-color);
+                    transition: all 0.15s ease-in-out;
+                }
+                .icon:hover {
+                    color: #fff;
+                }
+            }
+
+            .whitelistAdd:hover {
+                background-color: var(--dark-01-color);
+                border: 2px solid var(--blue-04-color);
+            }
+
+            .whitelistAdd:hover .icon {
+                color: #fff;
+            }
+
+            .whitelistUsers {
+                margin-top: 10px;
+                background-color: var(--dark-02-color);
+                border-radius: 10px;
+                padding: 20px;
+
+                .whitelistUsersTitleDiv {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .whitelistUsersTitle {
+                        color: #fff;
+                        font-size: 20px;
+                    }
+                    .whitelistUsersNumber {
+                        color: var(--white-02-color);
+                        font-size: 20px;
+                    }
+                }
+
+                .whitelists {
+                    max-height: 1000px;
+                    overflow-y: auto;
+
+                    .whitelistUser {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background-color: var(--dark-01-color);
+                        border-radius: 10px;
+                        padding: 20px;
+                        border: 2px solid transparent;
+                        transition: all 0.15s ease-in-out;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        margin-bottom: 8px;
+
+                        .whitelist_l {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+
+                            .whitelistUserText {
+                                color: #fff;
+                                font-size: 18px;
+                                min-width: 300px;
+                                min-width: 400px;
+                            }
+                        }
+
+                        .whitelist_r {
+                            .icon {
+                                width: 30px;
+                                height: auto;
+                                cursor: pointer;
+                                color: var(--white-02-color);
+                                transition: all 0.15s ease-in-out;
+                            }
+                            .icon:hover {
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    .whitelistUser:hover {
+                        border: 2px solid var(--blue-04-color);
+                    }
+                }
+
+                .whitelists::-webkit-scrollbar {
+                    width: 8px;
+                }
+                
+                .whitelists::-webkit-scrollbar-thumb {
+                    border-radius: 20px;
+                    background-color: #979797;
+                }
+                
+                .whitelists::-webkit-scrollbar-track {
+                    border-radius: 20px;
+                    background-color: rgba(100, 100, 100, 0.5);
+                }
+            }
+        }
+    }
+}
+
+.launcherAssetsGeneral::-webkit-scrollbar {
+    width: 8px;
+}
+
+.launcherAssetsGeneral::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #979797;
+}
+
+.launcherAssetsGeneral::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}

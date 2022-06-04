@@ -1,0 +1,44 @@
+.wrapperModalCustomize {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    animation-name: alertBackground;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+
+    .container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%) translateY(-50%);
+        background-color: var(--dark-03-color);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+        padding: 20px 30px;
+        border-radius: 10px;
+        animation-name: alertConfirm;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@keyframes alertBackground {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+@keyframes alertConfirm {
+    from {
+        transform: translate(-50%) translateY(-50%) scale(0.9);
+    }
+    to {
+        transform: translate(-50%) translateY(-50%) scale(1);
+    }
+}

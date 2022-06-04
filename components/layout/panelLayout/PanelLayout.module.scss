@@ -1,0 +1,77 @@
+.panelLayout {
+    width: 100vw;
+    height: 100vh;
+
+    .leftPanelLayout {
+        background-color: var(--dark-02-color);
+        box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+
+        .logoTitleImg {
+            cursor: pointer;
+            margin-bottom: 50px;
+        }
+
+        .menus {
+            .menu {
+                width: 100%;
+                margin-bottom: 20px;
+
+                .title {
+                    color: #fff;
+                    font-size: 14px;
+                }
+
+                .childrenMenu {
+                    padding: 12px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    .childrenTitle {
+                        color: var(--white-01-color);
+                        font-size: 16px;
+                        transition: all 0.1s linear;
+                    }
+                }
+
+                .childrenMenu:hover {
+                    .childrenTitle {
+                        color: #fff;
+                    }
+                }
+
+                .childrenMenuHover {
+                    background-color: rgba(255, 255, 255, 0.08);
+                    .childrenTitle {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .rightPanelLayout {
+        .top {
+            width: 100%;
+            background-color: var(--dark-02-color);
+            padding: 10px 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+            .right {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .username {
+                    color: var(--white-02-color);
+                    margin: 0;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .main {
+            position: relative;
+            width: 100%;
+        }
+    }
+}
