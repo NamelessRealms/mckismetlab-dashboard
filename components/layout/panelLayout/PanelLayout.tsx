@@ -1,11 +1,12 @@
 import styles from "./PanelLayout.module.scss";
 import Image from "next/image";
 import mckismetlabLogoTitleImg from "../../../assets/images/logo/mckismetlab-title.png";
-import { ReactNode, useEffect, useState } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { v4 as uuidV4 } from "uuid";
+import { Session } from "next-auth";
 
 interface IProps {
     children: ReactNode;
@@ -14,7 +15,7 @@ interface IProps {
 export default function PanelLayout(props: IProps) {
 
     const router = useRouter();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [secretMenu, setSecretMenu] = useState<IMenusType>(IMenusType.LAUNCHER_ASSETS);
 
     useEffect(() => {
@@ -53,20 +54,31 @@ export default function PanelLayout(props: IProps) {
                 <div className={styles.menus}>
                     {
                         menus.map((menu) => (
-                            <div key={uuidV4()} className={styles.menu}>
-                                <h1 className={`${styles.title} mb-3`}>{menu.title}</h1>
-                                {
-                                    menu.childrenMenus.map((childrenMenu) => (
-                                        <div
-                                            key={uuidV4()}
-                                            className={`${styles.childrenMenu} ${secretMenu === childrenMenu.id ? styles.childrenMenuHover : ""}`}
-                                            onClick={() => onMenuClick(childrenMenu.id, childrenMenu.linkTo)}
-                                        >
-                                            <h2 className={`${styles.childrenTitle} m-0`}>{childrenMenu.title}</h2>
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                            <AuthGuard
+                                key={uuidV4()}
+                                isAdmin={session?.isAdmin}
+                                requireAuth={menu.requireAuth}
+                            >
+                                <div className={styles.menu}>
+                                    <h1 className={`${styles.title} mb-3`}>{menu.title}</h1>
+                                    {
+                                        menu.childrenMenus.map((childrenMenu) => (
+                                            <AuthGuard
+                                                key={uuidV4()}
+                                                isAdmin={session?.isAdmin}
+                                                requireAuth={childrenMenu.requireAuth}
+                                            >
+                                                <div
+                                                    className={`${styles.childrenMenu} ${secretMenu === childrenMenu.id ? styles.childrenMenuHover : ""}`}
+                                                    onClick={() => onMenuClick(childrenMenu.id, childrenMenu.linkTo)}
+                                                >
+                                                    <h2 className={`${styles.childrenTitle} m-0`}>{childrenMenu.title}</h2>
+                                                </div>
+                                            </AuthGuard>
+                                        ))
+                                    }
+                                </div>
+                            </AuthGuard>
                         ))
                     }
                 </div>
@@ -87,8 +99,17 @@ export default function PanelLayout(props: IProps) {
 
             </div>
 
-        </div>
+        </div >
     );
+}
+
+function AuthGuard(props: { children: ReactNode, isAdmin?: boolean, requireAuth?: boolean }) {
+    
+    if (!props.requireAuth || (props.requireAuth && props.isAdmin)) {
+        return <>{props.children}</>;
+    }
+
+    return null;
 }
 
 enum IMenusType {
@@ -99,16 +120,19 @@ enum IMenusType {
 
 interface IMenus {
     title: string;
+    requireAuth?: boolean;
     childrenMenus: Array<{
         id: IMenusType;
         title: string;
         linkTo: string;
+        requireAuth?: boolean;
     }>
 }
 
 const menus: Array<IMenus> = [
     {
         title: "伺服器管理",
+        requireAuth: true,
         childrenMenus: [
             {
                 id: IMenusType.WHITELIST,
@@ -119,6 +143,7 @@ const menus: Array<IMenus> = [
     },
     {
         title: "啟動器",
+        requireAuth: true,
         childrenMenus: [
             {
                 id: IMenusType.LAUNCHER_ASSETS,

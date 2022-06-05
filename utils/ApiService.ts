@@ -1,6 +1,14 @@
 import ILauncherAssets from "../interfaces/ILauncherAssets";
 import IMinecraftProfile from "../interfaces/IMinecraftProfile";
 
+interface IPanelUser {
+    id: string;
+    github_user_name: string;
+    github_user_email: string;
+    github_user_id: string;
+    roles: Array<string>;
+}
+
 export default class ApiService {
 
     public static apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : process.env.NEXT_PUBLIC_MKL_API_SERVER_URL;
@@ -31,5 +39,14 @@ export default class ApiService {
         }
 
         return launcherAssets !== null ? launcherAssets.assets_data : null;
+    }
+
+    public static async getPanelUser(id: string): Promise<IPanelUser | null> {
+
+        const url = `${ApiService.apiServerUrl}/user/panel/${id}`;
+        const panelUserResponse = await fetch(url);
+        if (panelUserResponse.status !== 200) return null;
+
+        return await panelUserResponse.json();
     }
 }

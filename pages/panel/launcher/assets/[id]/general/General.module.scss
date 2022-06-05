@@ -13,7 +13,7 @@
                 font-size: 22px;
             }
         }
-        
+
         .modalCustomizeTitleDiv_r {
             display: flex;
             justify-content: flex-end;
@@ -130,125 +130,129 @@
                 }
             }
 
-            .whitelistAdd {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px;
-                background-color: var(--dark-02-color);
-                border-radius: 10px;
-                border: 2px solid transparent;
-                transition: all 0.15s ease-in-out;
-                cursor: pointer;
+            .whitelistUsersContainer {
+                position: relative;
 
-                .whitelistAddTitle {
-                    color: #fff;
-                    font-size: 20px;
-                }
-
-                .icon {
-                    width: 30px;
-                    height: auto;
-                    cursor: pointer;
-                    color: var(--white-02-color);
-                    transition: all 0.15s ease-in-out;
-                }
-                .icon:hover {
-                    color: #fff;
-                }
-            }
-
-            .whitelistAdd:hover {
-                background-color: var(--dark-01-color);
-                border: 2px solid var(--blue-04-color);
-            }
-
-            .whitelistAdd:hover .icon {
-                color: #fff;
-            }
-
-            .whitelistUsers {
-                margin-top: 10px;
-                background-color: var(--dark-02-color);
-                border-radius: 10px;
-                padding: 20px;
-
-                .whitelistUsersTitleDiv {
+                .whitelistAdd {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    padding: 20px;
+                    background-color: var(--dark-02-color);
+                    border-radius: 10px;
+                    border: 2px solid transparent;
+                    transition: all 0.15s ease-in-out;
+                    cursor: pointer;
 
-                    .whitelistUsersTitle {
+                    .whitelistAddTitle {
                         color: #fff;
                         font-size: 20px;
                     }
-                    .whitelistUsersNumber {
+
+                    .icon {
+                        width: 30px;
+                        height: auto;
+                        cursor: pointer;
                         color: var(--white-02-color);
-                        font-size: 20px;
+                        transition: all 0.15s ease-in-out;
+                    }
+                    .icon:hover {
+                        color: #fff;
                     }
                 }
 
-                .whitelists {
-                    max-height: 1000px;
-                    overflow-y: auto;
+                .whitelistAdd:hover {
+                    background-color: var(--dark-01-color);
+                    border: 2px solid var(--blue-04-color);
+                }
 
-                    .whitelistUser {
+                .whitelistAdd:hover .icon {
+                    color: #fff;
+                }
+
+                .whitelistUsers {
+                    margin-top: 10px;
+                    background-color: var(--dark-02-color);
+                    border-radius: 10px;
+                    padding: 20px;
+
+                    .whitelistUsersTitleDiv {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        background-color: var(--dark-01-color);
-                        border-radius: 10px;
-                        padding: 20px;
-                        border: 2px solid transparent;
-                        transition: all 0.15s ease-in-out;
-                        cursor: pointer;
-                        margin-right: 5px;
-                        margin-bottom: 8px;
 
-                        .whitelist_l {
+                        .whitelistUsersTitle {
+                            color: #fff;
+                            font-size: 20px;
+                        }
+                        .whitelistUsersNumber {
+                            color: var(--white-02-color);
+                            font-size: 20px;
+                        }
+                    }
+
+                    .whitelists {
+                        max-height: 1000px;
+                        overflow-y: auto;
+
+                        .whitelistUser {
                             display: flex;
-                            justify-content: flex-start;
+                            justify-content: space-between;
                             align-items: center;
+                            background-color: var(--dark-01-color);
+                            border-radius: 10px;
+                            padding: 20px;
+                            border: 2px solid transparent;
+                            transition: all 0.15s ease-in-out;
+                            cursor: pointer;
+                            margin-right: 5px;
+                            margin-bottom: 8px;
 
-                            .whitelistUserText {
-                                color: #fff;
-                                font-size: 18px;
-                                min-width: 300px;
-                                min-width: 400px;
+                            .whitelist_l {
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+
+                                .whitelistUserText {
+                                    color: #fff;
+                                    font-size: 18px;
+                                    min-width: 300px;
+                                    min-width: 400px;
+                                }
+                            }
+
+                            .whitelist_r {
+                                .icon {
+                                    width: 30px;
+                                    height: auto;
+                                    cursor: pointer;
+                                    color: var(--white-02-color);
+                                    transition: all 0.15s ease-in-out;
+                                }
+                                .icon:hover {
+                                    color: #fff;
+                                }
                             }
                         }
 
-                        .whitelist_r {
-                            .icon {
-                                width: 30px;
-                                height: auto;
-                                cursor: pointer;
-                                color: var(--white-02-color);
-                                transition: all 0.15s ease-in-out;
-                            }
-                            .icon:hover {
-                                color: #fff;
-                            }
+                        .whitelistUser:hover {
+                            border: 2px solid var(--blue-04-color);
                         }
                     }
 
-                    .whitelistUser:hover {
-                        border: 2px solid var(--blue-04-color);
+                    .whitelists::-webkit-scrollbar {
+                        width: 8px;
                     }
-                }
 
-                .whitelists::-webkit-scrollbar {
-                    width: 8px;
-                }
-                
-                .whitelists::-webkit-scrollbar-thumb {
-                    border-radius: 20px;
-                    background-color: #979797;
-                }
-                
-                .whitelists::-webkit-scrollbar-track {
-                    border-radius: 20px;
-                    background-color: rgba(100, 100, 100, 0.5);
+                    .whitelists::-webkit-scrollbar-thumb {
+                        border-radius: 20px;
+                        background-color: #979797;
+                    }
+
+                    .whitelists::-webkit-scrollbar-track {
+                        border-radius: 20px;
+                        background-color: rgba(100, 100, 100, 0.5);
+                    }
                 }
             }
         }

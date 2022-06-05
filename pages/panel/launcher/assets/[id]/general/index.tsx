@@ -20,6 +20,7 @@ import ApiService from "../../../../../../utils/ApiService";
 import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
 import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
 import Utils from "../../../../../../utils/Utils";
+import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
 
 enum IWhitelistActionState {
     ALL_BE_USABLE = "all",
@@ -65,7 +66,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
     const [editActionPlayer, setEditActionPlayer] = useState<ILauncherAssetServerGeneralUniqueId>(initialActionPlayerState);
     // const []
 
-    const [actionTypeToggle, setActionTypeToggle] = useState<boolean>(actionType === "all");
+    const [actionTypeToggle, setActionTypeToggle] = useState<boolean>(actionType !== "all");
 
     useEffect(() => {
         if (!initialState) setInitialState(true);
@@ -107,7 +108,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
         newLauncherAssetServer.imageUrl = imageUrl;
         newLauncherAssetServer.officialWebLinkUrl = officialWebLinkUrl;
         newLauncherAssetServer.description = description;
-        newLauncherAssetServer.minecraftType = minecraftType;
+        newLauncherAssetServer.minecraftType = Utils.getRunMinecraftType(newLauncherAssetServer);
         newLauncherAssetServer.minecraftVersion = minecraftVersion;
         newLauncherAssetServer.action = {
             type: actionTypeToggle ? actionType : "all",
@@ -127,7 +128,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
 
             if (editActionPlayer.uniqueId.length > 0) {
                 const newActionPlayers = actionPlayers.map((actionPlayer) => {
-                    if(actionPlayer.uniqueId === editActionPlayer.uniqueId) {
+                    if (actionPlayer.uniqueId === editActionPlayer.uniqueId) {
                         actionPlayer = editActionPlayer;
                     }
                     return actionPlayer;
@@ -168,7 +169,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
 
     const onEditWhitelistModalCustomizeClick = (id: string) => {
         const actionPlayer = actionPlayers.find((actionPlayer) => actionPlayer.uniqueId === id);
-        if(actionPlayer === undefined) return;
+        if (actionPlayer === undefined) return;
         setEditActionPlayer(actionPlayer);
         setModalCustomizeState(true);
     }
@@ -200,7 +201,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
                             <h1 className={`${styles.modalCustomizeTitle} m-0`}>玩家資料</h1>
                         </div>
                         <div className={styles.modalCustomizeTitleDiv_r}>
-                            <Button className="me-2" variant="secondary" onClick={() => setModalCustomizeState(false)}>取消</Button>
+                            <Button className="me-2" variant="danger" onClick={() => setModalCustomizeState(false)}>取消</Button>
                             <Button variant="primary" type="submit">儲存</Button>
                         </div>
                     </div>
@@ -352,6 +353,7 @@ export default function LauncherAssetsGeneral(props: IProps) {
                             <Toggle className={styles.whitelistTitleDiv_r_toggle} state={actionTypeToggle} onChange={(state) => setActionTypeToggle(state)} />
                             <DropMenu
                                 className={styles.whitelistTitleDiv_r_dropMenu}
+                                disable={!actionTypeToggle}
                                 value={actionType !== "all" ? actionType : IWhitelistActionState.WHITELIST}
                                 onChange={(value) => setActionType(value)}
                                 items={[
@@ -371,41 +373,47 @@ export default function LauncherAssetsGeneral(props: IProps) {
 
                     <hr />
 
-                    <div className={styles.whitelistAdd} onClick={onWhitelistModalCustomizeAddClick}>
-                        <h1 className={`${styles.whitelistAddTitle} m-0`}>添加玩家</h1>
-                        <IoAddSharp className={styles.icon} />
-                    </div>
+                    <div className={styles.whitelistUsersContainer}>
 
-                    <div className={styles.whitelistUsers}>
+                        <DisableBlock open={!actionTypeToggle} />
 
-                        <div className={styles.whitelistUsersTitleDiv}>
-                            <h1 className={`${styles.whitelistUsersTitle} m-0`}>玩家</h1>
-                            <h1 className={`${styles.whitelistUsersNumber}`}>{actionPlayers.length}</h1>
+                        <div className={styles.whitelistAdd} onClick={onWhitelistModalCustomizeAddClick}>
+                            <h1 className={`${styles.whitelistAddTitle} m-0`}>添加玩家</h1>
+                            <IoAddSharp className={styles.icon} />
                         </div>
 
-                        <hr />
+                        <div className={styles.whitelistUsers}>
 
-                        <div className={styles.whitelists}>
-                            {
-                                actionPlayers.map((actionPlayer) => (
-                                    <div key={uuidV4()} className={styles.whitelistUser} onClick={() => onEditWhitelistModalCustomizeClick(actionPlayer.uniqueId)}>
+                            <div className={styles.whitelistUsersTitleDiv}>
+                                <h1 className={`${styles.whitelistUsersTitle} m-0`}>玩家</h1>
+                                <h1 className={`${styles.whitelistUsersNumber}`}>{actionPlayers.length}</h1>
+                            </div>
 
-                                        <div className={styles.whitelist_l}>
+                            <hr />
 
-                                            <h1 className={`${styles.whitelistUserText} m-0`}>{actionPlayer.name}</h1>
-                                            <h1 className={`${styles.whitelistUserText} m-0`}>{actionPlayer.uuid}</h1>
+                            <div className={styles.whitelists}>
+                                {
+                                    actionPlayers.map((actionPlayer) => (
+                                        <div key={uuidV4()} className={styles.whitelistUser} onClick={() => onEditWhitelistModalCustomizeClick(actionPlayer.uniqueId)}>
+
+                                            <div className={styles.whitelist_l}>
+
+                                                <h1 className={`${styles.whitelistUserText} m-0`}>{actionPlayer.name}</h1>
+                                                <h1 className={`${styles.whitelistUserText} m-0`}>{actionPlayer.uuid}</h1>
+
+                                            </div>
+
+                                            <div className={styles.whitelist_r}>
+
+                                                <CgTrash className={styles.icon} onClick={(event) => onDeleteWhitelistClick(event, actionPlayer.uniqueId)} />
+
+                                            </div>
 
                                         </div>
+                                    ))
+                                }
+                            </div>
 
-                                        <div className={styles.whitelist_r}>
-
-                                            <CgTrash className={styles.icon} onClick={(event) => onDeleteWhitelistClick(event, actionPlayer.uniqueId)} />
-
-                                        </div>
-
-                                    </div>
-                                ))
-                            }
                         </div>
 
                     </div>

@@ -11,6 +11,7 @@ import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalC
 import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
 import Toggle from "../../../../../../components/toggle/Toggle";
 import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
+import Utils from "../../../../../../utils/Utils";
 
 enum IModpackType {
     CURSE_FORGE = "CurseForge",
@@ -74,7 +75,7 @@ export default function LauncherAssetsModpack() {
         return <></>;
     }
 
-    // save the new launcher asset server
+    // * save the new launcher asset server
     const launcherAssetServerSave = () => {
         setModalChangeSaveState(false);
 
@@ -94,6 +95,8 @@ export default function LauncherAssetsModpack() {
         } else {
             newLauncherAssetServer.modpack = null;
         }
+
+        newLauncherAssetServer.minecraftType = Utils.getRunMinecraftType(newLauncherAssetServer);
 
         dispatch(setServer({
             id: serverId,

@@ -3,6 +3,7 @@ import styles from "./DropMenu.module.scss";
 import Trail from "../animations/trail/Trail";
 import { v4 as uuidV4 } from "uuid";
 import { IoChevronDownOutline } from "react-icons/io5";
+import DisableBlock from "../disableBlock/DisableBlock";
 
 interface IProps<Type> {
     label?: string;
@@ -12,6 +13,7 @@ interface IProps<Type> {
     }>;
 
     value: Type;
+    disable?: boolean;
     wrapperClassName?: string;
     className?: string;
     onChange?: (value: Type) => void;
@@ -54,6 +56,14 @@ export default function DropMenu<Type>(props: IProps<Type>) {
             }
 
             <div ref={wrapperRef} className={`${styles.dropMenuDiv} ${props.className}`}>
+
+                {
+                    props.disable !== undefined
+                    ?
+                    <DisableBlock open={props.disable} />
+                    : null
+                }
+
                 <div
                     className={styles.dropMenuButton}
                     onClick={() => {

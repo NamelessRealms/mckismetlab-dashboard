@@ -62,6 +62,7 @@ export default function LauncherAssetsModule() {
         setModalChangeSaveState(false);
         const newLauncherAssetServer = Object.assign({}, launcherAssetServer);
         newLauncherAssetServer.modules = Utils.removeItemUniqueId(myModules);
+        newLauncherAssetServer.minecraftType = Utils.getRunMinecraftType(newLauncherAssetServer);
         dispatch(setServer({ id: serverId, data: newLauncherAssetServer }));
     }
 
@@ -128,7 +129,7 @@ export default function LauncherAssetsModule() {
                             <h1 className={`${styles.modalCustomizeTitle} m-0`}>模組資料</h1>
                         </div>
                         <div className={styles.modalCustomizeTitleDiv_r}>
-                            <Button className="me-2" variant="secondary" onClick={() => setEditModuleModalCustomizeState(false)}>取消</Button>
+                            <Button className="me-2" variant="danger" onClick={() => setEditModuleModalCustomizeState(false)}>取消</Button>
                             <Button variant="primary" type="submit">儲存</Button>
                         </div>
                     </div>

@@ -206,16 +206,16 @@
     }
 }
 
-.module::-webkit-scrollbar, .moduleItems::-webkit-scrollbar {
+.launcherAssetsModule::-webkit-scrollbar, .moduleItems::-webkit-scrollbar {
     width: 8px;
 }
 
-.module::-webkit-scrollbar-thumb, .moduleItems::-webkit-scrollbar-thumb {
+.launcherAssetsModule::-webkit-scrollbar-thumb, .moduleItems::-webkit-scrollbar-thumb {
     border-radius: 20px;
     background-color: #979797;
 }
 
-.module::-webkit-scrollbar-track, .moduleItems::-webkit-scrollbar-track {
+.launcherAssetsModule::-webkit-scrollbar-track, .moduleItems::-webkit-scrollbar-track {
     border-radius: 20px;
     background-color: rgba(100, 100, 100, 0.5);
 }

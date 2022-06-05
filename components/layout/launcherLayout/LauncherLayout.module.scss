@@ -57,3 +57,54 @@
         }
     }
 }
+
+.modalCustomizeTitleDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .modalCustomizeTitleDiv_l {
+        .modalCustomizeTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+    }
+
+    .modalCustomizeTitleDiv_r {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.releaseModalCustomizeContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .releaseModalCustomizeTitle {
+        color: var(--white-01-color);
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .releaseModalCustomizeTitleValue {
+            color: #fff;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+    }
+
+    .releaseModalCustomizeContainerLeft {
+        min-width: 300px;
+        max-width: 350px;
+        padding: 0px 20px 0px 0px;
+    }
+
+    .releaseModalCustomizeContainerRight {
+        min-width: 300px;
+        max-width: 350px;
+        padding: 0px 0px 0px 20px;
+        border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+}

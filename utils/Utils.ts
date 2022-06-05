@@ -1,4 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
+import { ILauncherAssetServer, ILauncherAssetServerMinecraftType } from "../interfaces/ILauncherAssets";
 
 export default class Utils {
 
@@ -22,5 +23,11 @@ export default class Utils {
             returnNewObjects.push(newObject);
         }
         return returnNewObjects;
+    }
+
+    public static getRunMinecraftType(launcherAssetServer: ILauncherAssetServer): ILauncherAssetServerMinecraftType {
+        if(launcherAssetServer.modpack !== null) return "minecraftModpack";
+        if(launcherAssetServer.modpack === null && launcherAssetServer.modules.length > 0) return "minecraftModules";
+        return "minecraftVanilla";
     }
 }
