@@ -1,12 +1,11 @@
 import styles from "./PanelLayout.module.scss";
 import Image from "next/image";
 import mckismetlabLogoTitleImg from "../../../assets/images/logo/mckismetlab-title.png";
-import { Fragment, ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { v4 as uuidV4 } from "uuid";
-import { Session } from "next-auth";
 
 interface IProps {
     children: ReactNode;
@@ -137,7 +136,7 @@ const menus: Array<IMenus> = [
             {
                 id: IMenusType.WHITELIST,
                 title: "白名單",
-                linkTo: "/panel/server/whitelist"
+                linkTo: "/server/whitelist"
             }
         ]
     },
@@ -148,12 +147,12 @@ const menus: Array<IMenus> = [
             {
                 id: IMenusType.LAUNCHER_ASSETS,
                 title: "伺服器",
-                linkTo: "/panel/launcher/assets"
+                linkTo: "/launcher/assets"
             },
             {
                 id: IMenusType.LAUNCHER_ISSUES,
                 title: "問題回報",
-                linkTo: "/panel/launcher/issues"
+                linkTo: "/launcher/issues"
             }
         ]
     }

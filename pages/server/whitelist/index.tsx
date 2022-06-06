@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import PanelLayout from "../../../../components/layout/panelLayout/PanelLayout";
+import PanelLayout from "../../../components/layout/panelLayout/PanelLayout";
 
 export default function Whitelist() {
 

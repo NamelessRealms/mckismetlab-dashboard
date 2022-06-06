@@ -50,7 +50,7 @@ export default function LauncherLayout(props: IProps) {
 
     useEffect(() => {
         if (selectServer === undefined) return; // TODO
-        router.push(`/panel/launcher/assets/${selectServer}${router.pathname.split("[id]")[1]}`);
+        router.push(`/launcher/assets/${selectServer}${router.pathname.split("[id]")[1]}`);
     }, [selectServer]);
 
     const getApiLauncherAssetServer = async () => {
@@ -293,31 +293,31 @@ const navbar: Array<INavbar> = [
     {
         id: INavbarType.GENERAL,
         title: "一般",
-        rootLink: "/panel/launcher/assets",
+        rootLink: "/launcher/assets",
         linkTo: "/general"
     },
     {
         id: INavbarType.MODPACK,
         title: "模組包",
-        rootLink: "/panel/launcher/assets",
+        rootLink: "/launcher/assets",
         linkTo: "/modpack"
     },
     {
         id: INavbarType.LOADER,
         title: "模組加載器",
-        rootLink: "/panel/launcher/assets",
+        rootLink: "/launcher/assets",
         linkTo: "/loader"
     },
     {
         id: INavbarType.MODULE,
         title: "模組",
-        rootLink: "/panel/launcher/assets",
+        rootLink: "/launcher/assets",
         linkTo: "/module"
     },
     {
         id: INavbarType.JAVA,
         title: "Java",
-        rootLink: "/panel/launcher/assets",
+        rootLink: "/launcher/assets",
         linkTo: "/java"
     }
 ]

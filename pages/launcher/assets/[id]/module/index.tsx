@@ -4,18 +4,18 @@ import { CgTrash } from "react-icons/cg";
 import { v4 as uuidV4 } from "uuid";
 import { IoAddSharp } from "react-icons/io5";
 import { BiEdit } from "react-icons/bi";
-import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
-import LauncherLayout from "../../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../../components/layout/panelLayout/PanelLayout";
-import { ILauncherAssetServerModule, ILauncherAssetServerModulesAction, ILauncherAssetServerModuleType } from "../../../../../../interfaces/ILauncherAssets";
-import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
+import DisableBlock from "../../../../../components/disableBlock/DisableBlock";
+import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
+import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import { ILauncherAssetServerModule, ILauncherAssetServerModulesAction, ILauncherAssetServerModuleType } from "../../../../../interfaces/ILauncherAssets";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import styles from "./Module.module.scss";
-import ModalCustomize from "../../../../../../components/modalCustomize/ModalCustomize";
+import ModalCustomize from "../../../../../components/modalCustomize/ModalCustomize";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import DropMenu from "../../../../../../components/dropMenu/DropMenu";
-import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
-import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalChangeSave";
-import Utils from "../../../../../../utils/Utils";
+import DropMenu from "../../../../../components/dropMenu/DropMenu";
+import { setServer } from "../../../../../store/slices/launcherAssetsSlice";
+import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
+import Utils from "../../../../../utils/Utils";
 
 export default function LauncherAssetsModule() {
 

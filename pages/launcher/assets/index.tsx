@@ -1,16 +1,16 @@
-import PanelLayout from "../../../../components/layout/panelLayout/PanelLayout";
-import ILauncherAssets from "../../../../interfaces/ILauncherAssets";
+import PanelLayout from "../../../components/layout/panelLayout/PanelLayout";
+import ILauncherAssets from "../../../interfaces/ILauncherAssets";
 import styles from "./LauncherAssets.module.scss";
 import { ReactElement, useEffect } from "react";
 import { GetServerSideProps } from "next";
 import { v4 as uuidV4 } from "uuid";
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { setLauncherAssets } from "../../../../store/slices/launcherAssetsSlice";
+import { setLauncherAssets } from "../../../store/slices/launcherAssetsSlice";
 // import { useDispatch, useSelector } from "react-redux";
 // import { wrapper } from "../../../../store/store";
-import { useAppDispatch } from "../../../../store/hooks";
-import ApiService from "../../../../utils/ApiService";
+import { useAppDispatch } from "../../../store/hooks";
+import ApiService from "../../../utils/ApiService";
 
 interface IProps {
     launcherAssets: ILauncherAssets | null
@@ -23,7 +23,7 @@ export default function LauncherAssets(props: IProps) {
     const dispatch = useAppDispatch();
 
     const onClick = (id: string) => {
-        router.push(`/panel/launcher/assets/${id}/general`);
+        router.push(`/launcher/assets/${id}/general`);
     }
 
     useEffect(() => {

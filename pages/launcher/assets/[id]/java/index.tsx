@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import { ReactElement, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import DropMenu from "../../../../../../components/dropMenu/DropMenu";
-import LauncherLayout from "../../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../../components/layout/panelLayout/PanelLayout";
-import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalChangeSave";
-import { ILauncherAssetServerJava, ILauncherAssetServeSystemJavaType } from "../../../../../../interfaces/ILauncherAssets";
-import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
-import Utils from "../../../../../../utils/Utils";
+import DropMenu from "../../../../../components/dropMenu/DropMenu";
+import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
+import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
+import { ILauncherAssetServerJava, ILauncherAssetServeSystemJavaType } from "../../../../../interfaces/ILauncherAssets";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { setServer } from "../../../../../store/slices/launcherAssetsSlice";
+import Utils from "../../../../../utils/Utils";
 import styles from "./Java.module.scss";
 
 export default function LauncherAssetsJava() {

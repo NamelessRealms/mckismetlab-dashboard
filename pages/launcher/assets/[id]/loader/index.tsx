@@ -1,16 +1,16 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { ILauncherAssetServerModLoaderType } from "../../../../../../interfaces/ILauncherAssets";
-import DropMenu from "../../../../../../components/dropMenu/DropMenu";
-import LauncherLayout from "../../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../../components/layout/panelLayout/PanelLayout";
-import Toggle from "../../../../../../components/toggle/Toggle";
+import { ILauncherAssetServerModLoaderType } from "../../../../../interfaces/ILauncherAssets";
+import DropMenu from "../../../../../components/dropMenu/DropMenu";
+import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
+import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import Toggle from "../../../../../components/toggle/Toggle";
 import styles from "./Loader.module.scss";
 import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
-import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalChangeSave";
-import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { setServer } from "../../../../../store/slices/launcherAssetsSlice";
+import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
+import DisableBlock from "../../../../../components/disableBlock/DisableBlock";
 
 export default function LauncherAssetsLoader() {
 

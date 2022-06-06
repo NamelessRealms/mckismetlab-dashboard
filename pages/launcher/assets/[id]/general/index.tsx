@@ -1,5 +1,5 @@
-import LauncherLayout from "../../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../../components/layout/panelLayout/PanelLayout";
+import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
+import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
 import styles from "./General.module.scss";
 import { v4 as uuidV4 } from "uuid";
 import { GetServerSideProps } from "next";
@@ -8,19 +8,19 @@ import { useRouter } from "next/router";
 import { Button, Form, FormControl, InputGroup, Spinner } from "react-bootstrap";
 import { CgTrash } from "react-icons/cg";
 import { IoAddSharp } from "react-icons/io5";
-import IMojangManifestVersion, { IManifestVersion } from "../../../../../../interfaces/IMojangManifestVersion";
-import DropMenu from "../../../../../../components/dropMenu/DropMenu";
-import Toggle from "../../../../../../components/toggle/Toggle";
-import { ILauncherAssetServerActionPlayer, ILauncherAssetServerActionType, ILauncherAssetServerMinecraftType } from "../../../../../../interfaces/ILauncherAssets";
-import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalChangeSave";
-import ModalCustomize from "../../../../../../components/modalCustomize/ModalCustomize";
-import ApiService from "../../../../../../utils/ApiService";
+import IMojangManifestVersion, { IManifestVersion } from "../../../../../interfaces/IMojangManifestVersion";
+import DropMenu from "../../../../../components/dropMenu/DropMenu";
+import Toggle from "../../../../../components/toggle/Toggle";
+import { ILauncherAssetServerActionPlayer, ILauncherAssetServerActionType, ILauncherAssetServerMinecraftType } from "../../../../../interfaces/ILauncherAssets";
+import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
+import ModalCustomize from "../../../../../components/modalCustomize/ModalCustomize";
+import ApiService from "../../../../../utils/ApiService";
 // import { wrapper } from "../../../../../store/store";
 // import { useDispatch, useSelector } from "react-redux";
-import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
-import Utils from "../../../../../../utils/Utils";
-import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { setServer } from "../../../../../store/slices/launcherAssetsSlice";
+import Utils from "../../../../../utils/Utils";
+import DisableBlock from "../../../../../components/disableBlock/DisableBlock";
 
 enum IWhitelistActionState {
     ALL_BE_USABLE = "all",

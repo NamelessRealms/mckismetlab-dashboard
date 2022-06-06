@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
 import { ReactElement, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { ILauncherAssetServerModpackType } from "../../../../../../interfaces/ILauncherAssets";
-import LauncherLayout from "../../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../../components/layout/panelLayout/PanelLayout";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { ILauncherAssetServerModpackType } from "../../../../../interfaces/ILauncherAssets";
+import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
+import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
 import styles from "./Modpack.module.scss";
 import { Form } from "react-bootstrap";
-import DropMenu from "../../../../../../components/dropMenu/DropMenu";
-import ModalChangeSave from "../../../../../../components/modalChangeSave/ModalChangeSave";
-import { setServer } from "../../../../../../store/slices/launcherAssetsSlice";
-import Toggle from "../../../../../../components/toggle/Toggle";
-import DisableBlock from "../../../../../../components/disableBlock/DisableBlock";
-import Utils from "../../../../../../utils/Utils";
+import DropMenu from "../../../../../components/dropMenu/DropMenu";
+import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
+import { setServer } from "../../../../../store/slices/launcherAssetsSlice";
+import Toggle from "../../../../../components/toggle/Toggle";
+import DisableBlock from "../../../../../components/disableBlock/DisableBlock";
+import Utils from "../../../../../utils/Utils";
 
 enum IModpackType {
     CURSE_FORGE = "CurseForge",
