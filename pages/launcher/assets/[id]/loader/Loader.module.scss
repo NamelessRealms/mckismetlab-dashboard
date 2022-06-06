@@ -49,3 +49,17 @@
         }
     }
 }
+
+.loader::-webkit-scrollbar {
+    width: 8px;
+}
+
+.loader::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #979797;
+}
+
+.loader::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}

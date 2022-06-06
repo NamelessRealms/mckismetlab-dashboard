@@ -13,9 +13,6 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         ],
         secret: process.env.NEXTAUTH_SECRET,
         callbacks: {
-            async redirect({ url, baseUrl }) {
-                return baseUrl + "/dashboard";
-            },
             async session({ session, token, user }) {
                 session.isAdmin = token.isAdmin;
                 return session;

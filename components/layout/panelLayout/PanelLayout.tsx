@@ -14,8 +14,8 @@ interface IProps {
 export default function PanelLayout(props: IProps) {
 
     const router = useRouter();
-    const { data: session, status } = useSession();
-    const [secretMenu, setSecretMenu] = useState<IMenusType>(IMenusType.LAUNCHER_ASSETS);
+    const { data: session } = useSession();
+    const [secretMenu, setSecretMenu] = useState<IMenusType>();
 
     useEffect(() => {
 
@@ -90,7 +90,7 @@ export default function PanelLayout(props: IProps) {
                     <div></div>
                     <div className={`${styles.right}`}>
                         <h5 className={`${styles.username}`}>{session?.user?.name}</h5>
-                        <Button className={`${styles.signOutButton}`} variant="primary" onClick={() => signOut()}>登出</Button>
+                        <Button className={`${styles.signOutButton}`} variant="primary" onClick={() => signOut({ callbackUrl: "/dashboard/auth/signIn" })}>登出</Button>
                     </div>
                 </div>
 

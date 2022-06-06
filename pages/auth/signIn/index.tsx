@@ -14,7 +14,7 @@ export default function SignIn(props: IProps) {
 
     const login = () => {
         setLoginLoggingState(true);
-        signIn("github");
+        signIn("github", { callbackUrl: "/dashboard" });
     }
 
     return (
