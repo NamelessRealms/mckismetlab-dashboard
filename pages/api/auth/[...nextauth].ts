@@ -8,6 +8,9 @@ const { serverRuntimeConfig } = nextConfig();
 
 console.log(serverRuntimeConfig);
 
+console.log(process.env.GITHUB_ID);
+
+
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     return await NextAuth(req, res, {
         providers: [
