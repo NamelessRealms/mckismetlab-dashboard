@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+
+  webPanel:
+    image: mckismetlab.net/mckismetlab-panel
+    container_name: mckismetlab-panel
+    build:
+      context: .
+    ports:
+      - 56131:56131
+    env_file:
+      - "/home/quasi/service_server/env/mckismetlab-panel-env"
+    volumes:
+      - "/etc/timezone:/etc/timezone"
+      - "/etc/localtime:/etc/localtime"

@@ -1,5 +1,8 @@
+import nextConfig from "next/config";
 import ILauncherAssets from "../interfaces/ILauncherAssets";
 import IMinecraftProfile from "../interfaces/IMinecraftProfile";
+
+const { publicRuntimeConfig } = nextConfig();
 
 interface IPanelUser {
     id: string;
@@ -11,7 +14,7 @@ interface IPanelUser {
 
 export default class ApiService {
 
-    public static apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : process.env.NEXT_PUBLIC_MKL_API_SERVER_URL;
+    public static apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : publicRuntimeConfig.MKL_API_SERVER_URL;
 
     private static _mojangUrl = "https://api.mojang.com/users/profiles";
 
