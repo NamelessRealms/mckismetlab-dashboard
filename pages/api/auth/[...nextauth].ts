@@ -23,7 +23,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             async jwt({ token, user, account, profile, isNewUser }) {
 
                 if (user) {
-                    const panelUser = await ApiService.getPanelUser(user.id);
+                    const panelUser = await ApiService.getDashboardUser(user.id);
                     if (panelUser !== null) token.isAdmin = panelUser.roles.includes("admin");
                 }
 

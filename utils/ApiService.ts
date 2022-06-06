@@ -41,9 +41,9 @@ export default class ApiService {
         return launcherAssets !== null ? launcherAssets.assets_data : null;
     }
 
-    public static async getPanelUser(id: string): Promise<IPanelUser | null> {
+    public static async getDashboardUser(id: string): Promise<IPanelUser | null> {
 
-        const url = `${ApiService.apiServerUrl}/user/panel/${id}`;
+        const url = `${ApiService.apiServerUrl}/user/dashboard/${id}`;
         const panelUserResponse = await fetch(url);
         if (panelUserResponse.status !== 200) return null;
 
