@@ -6,6 +6,8 @@ import ApiService from "../../../utils/ApiService";
 
 const { serverRuntimeConfig } = nextConfig();
 
+console.log(serverRuntimeConfig);
+
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     return await NextAuth(req, res, {
         providers: [
