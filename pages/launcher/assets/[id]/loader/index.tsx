@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { ILauncherAssetServerModLoaderType } from "../../../../../interfaces/ILauncherAssets";
 import DropMenu from "../../../../../components/dropMenu/DropMenu";
 import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../../../components/layout/dashboardLayout/DashboardLayout";
 import Toggle from "../../../../../components/toggle/Toggle";
 import styles from "./Loader.module.scss";
 import { useRouter } from "next/router";
@@ -135,9 +135,9 @@ export default function LauncherAssetsLoader() {
 
 LauncherAssetsLoader.getLayout = (page: ReactElement) => {
     return (
-        <PanelLayout>
+        <DashboardLayout>
             <LauncherLayout>{page}</LauncherLayout>
-        </PanelLayout>
+        </DashboardLayout>
     );
 }
 

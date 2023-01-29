@@ -1,0 +1,1 @@
+export type ServerIdTypes = "mckismetlab-main-server" | "mckismetlab-deputy-server" | "mckismetlab-test-server";

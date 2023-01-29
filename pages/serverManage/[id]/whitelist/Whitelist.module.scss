@@ -1,0 +1,304 @@
+.serverManageWhitelist {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+
+    .container {
+        padding: 20px 40px;
+
+        .serverManageWhitelistTitle {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .wrapperContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 40px;
+
+            .whitelistNotPlayers {
+                color: var(--white-02-color);
+                font-size: 24px;
+                margin: 0;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .blockTitle {
+                color: #fff;
+                font-size: 22px;
+            }
+
+            .blockTitleDiv {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+
+                .blockTitleDivToggle {
+                    width: 58px;
+                    height: 32px;
+                    margin-right: 20px;
+                }
+            }
+
+            .serverManageWhitelistLeft {
+                flex: 1;
+
+                .whitelistUsersDiv {
+                    background-color: var(--dark-03-color);
+                    border-radius: 10px;
+                    width: 100%;
+                    padding: 20px;
+
+                    .whitelistUsersDiv_container {
+                        .searchWhitelistUserInput {
+                            background-color: var(--dark-01-color);
+                        }
+
+                        .whitelistUsersAdd {
+                            margin-top: 10px;
+                            height: 55px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 20px;
+                            background-color: var(--dark-01-color);
+                            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+                            border-radius: 10px;
+                            border: 2px solid transparent;
+                            transition: all 0.15s ease-in-out;
+                            cursor: pointer;
+
+                            .whitelistUsersAddTitle {
+                                color: #fff;
+                                font-size: 20px;
+                            }
+
+                            .whitelistUsersAddIcon {
+                                width: 30px;
+                                height: auto;
+                                cursor: pointer;
+                                color: var(--white-02-color);
+                                transition: all 0.15s ease-in-out;
+                            }
+                            .whitelistUsersAddIcon:hover {
+                                color: #fff;
+                            }
+                        }
+
+                        .whitelistUsersAdd:hover {
+                            background-color: var(--dark-01-color);
+                            border: 2px solid var(--blue-04-color);
+
+                            .whitelistUsersAddIcon {
+                                color: #fff;
+                            }
+                        }
+
+                        .whitelistUsers {
+                            margin-top: 10px;
+                            border-radius: 10px;
+                            background-color: var(--dark-03-color);
+                            padding: 0px 5px 0px 0px;
+                            overflow-y: scroll;
+                            overflow-x: hidden;
+                            height: 690px;
+                            max-height: 690px;
+
+                            .whitelistUserDiv {
+                                background-color: var(--dark-01-color);
+                                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+                                border: 2px solid transparent;
+                                border-radius: 10px;
+                                margin-bottom: 5px;
+                                padding: 15px 20px;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                transition: all 0.1s ease-in-out;
+                                cursor: pointer;
+
+                                .whitelistUserLeft {
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    flex: 1;
+
+                                    .whitelistUserTextEditInput {
+                                        margin-right: 10px;
+                                        max-width: 350px;
+                                        width: 100%;
+                                    }
+                                }
+
+                                .whitelistUserRight {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    width: 100%;
+                                    max-width: 250px;
+
+                                    // .whitelistUserTextEditIcon {
+                                    //     margin-left: 10px;
+                                    //     background: none;
+                                    //     border: none;
+                                    //     padding: 0;
+                                    // }
+
+                                    .whitelistUserBadgeDiv {
+                                        display: flex;
+                                        overflow-x: hidden;
+
+                                        .whitelistUserBadge {
+                                            font-size: 14px;
+                                            margin-left: 10px;
+                                            font-weight: 420;
+                                            letter-spacing: 1px;
+                                        }
+                                    }
+
+                                    .whitelistUserRightButtonDiv {
+                                        display: flex;
+
+                                        .whitelistUserRightIcon {
+                                            margin-left: 10px;
+                                            width: 30px;
+                                            height: auto;
+                                            cursor: pointer;
+                                            color: var(--white-02-color);
+                                            transition: all 0.15s ease-in-out;
+                                        }
+                                        .whitelistUserRightConfirmIcon {
+                                            color: rgba(99, 245, 140, 0.8);
+                                        }
+                                        .whitelistUserRightIcon:hover {
+                                            color: #fff;
+                                        }
+                                        .whitelistUserRightConfirmIcon:hover {
+                                            color: rgba(99, 245, 140, 1);
+                                        }
+                                    }
+                                }
+                            }
+
+                            .whitelistUserDiv:hover {
+                                border: 2px solid var(--blue-04-color);
+
+                                .whitelistUserLeft {
+                                    .whitelistUserTitle {
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .serverManageWhitelistRight {
+                margin-left: 30px;
+
+                .serverManageWhitelistRightBlock_1 {
+                    background-color: var(--dark-03-color);
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    padding: 20px;
+                    border-radius: 10px;
+                    width: 300px;
+
+                    .whitelistInfoTitleDiv {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: stretch;
+
+                        .whitelistInfoTitleIcon > * {
+                            color: var(--white-02-color);
+                            stroke: var(--white-02-color);
+                        }
+
+                        .whitelistInfoTitleIcon {
+                            width: 25px;
+                            height: 25px;
+                        }
+
+                        .whitelistInfoTitle {
+                            color: #fff;
+                            font-size: 22px;
+                            margin: 0 0 0 5px;
+                        }
+                    }
+
+                    .whitelistInfosDiv {
+                        margin-top: 25px;
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        .whitelistInfo {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            margin-bottom: 20px;
+
+                            .whitelistInfoLeft {
+                                .whitelistInfoIcon {
+                                    color: var(--white-02-color);
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
+
+                            .whitelistInfoRight {
+                                margin-left: 8px;
+
+                                .whitelistInfoText {
+                                    font-size: 16px;
+                                    color: #fff;
+                                    margin: 0;
+                                    font-weight: 400;
+                                }
+                                .whitelistInfoTextTop {
+                                    color: var(--white-02-color);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .whitelistManageDiv {
+                    margin-top: 20px;
+                    background-color: var(--dark-03-color);
+                    border-radius: 10px;
+                    width: 100%;
+                    padding: 20px;
+
+                    .whitelistManageDivBlock_1 {
+                        display: flex;
+                        justify-content: flex-start;
+                    }
+
+                    .openStateWrapperToggle {
+                        width: 100%;
+                        max-width: 300px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.serverManageWhitelist::-webkit-scrollbar,
+.whitelistUsers::-webkit-scrollbar {
+    width: 8px;
+}
+
+.serverManageWhitelist::-webkit-scrollbar-thumb,
+.whitelistUsers::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: var(--white-01-color);
+}
+
+.serverManageWhitelist::-webkit-scrollbar-track,
+.whitelistUsers::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}

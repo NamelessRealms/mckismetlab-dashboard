@@ -1,14 +1,17 @@
 .panelLayout {
     width: 100vw;
     height: 100vh;
+    // display: flex;
+    // justify-content: flex-start;
 
     .leftPanelLayout {
         background-color: var(--dark-02-color);
         box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+        padding: 10px 40px;
 
         .logoTitleImg {
             cursor: pointer;
-            margin-bottom: 50px;
+            margin-bottom: 35px;
         }
 
         .menus {
@@ -16,13 +19,25 @@
                 width: 100%;
                 margin-bottom: 20px;
 
+                .menuTitleDiv {
+                    padding: 12px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    .menuTitle {
+                        color: var(--white-01-color);
+                        font-size: 18px;
+                        transition: all 0.1s linear;
+                    }
+                }
+
                 .title {
                     color: #fff;
                     font-size: 14px;
                 }
 
                 .childrenMenu {
-                    padding: 12px 20px;
+                    padding: 12px 10px;
                     border-radius: 5px;
                     cursor: pointer;
 
@@ -33,8 +48,21 @@
                     }
                 }
 
+                .menuTitleDiv:hover {
+                    .menuTitle {
+                        color: #fff;
+                    }
+                }
+
                 .childrenMenu:hover {
                     .childrenTitle {
+                        color: #fff;
+                    }
+                }
+
+                .menuTitleDivHover {
+                    background-color: rgba(255, 255, 255, 0.08);
+                    .menuTitle {
                         color: #fff;
                     }
                 }

@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import { ILauncherAssetServerModpackType } from "../../../../../interfaces/ILauncherAssets";
 import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../../../components/layout/dashboardLayout/DashboardLayout";
 import styles from "./Modpack.module.scss";
 import { Form } from "react-bootstrap";
 import DropMenu from "../../../../../components/dropMenu/DropMenu";
@@ -233,9 +233,9 @@ export default function LauncherAssetsModpack() {
 
 LauncherAssetsModpack.getLayout = (page: ReactElement) => {
     return (
-        <PanelLayout>
+        <DashboardLayout>
             <LauncherLayout>{page}</LauncherLayout>
-        </PanelLayout>
+        </DashboardLayout>
     );
 }
 

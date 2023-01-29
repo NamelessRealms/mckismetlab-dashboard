@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import "../styles/globals.scss"
 import { SessionProvider } from "next-auth/react";
 import { NextPage } from "next";
-import { FC, ReactElement, ReactNode, useEffect } from "react";
+import { FC, ReactElement, ReactNode } from "react";
 import { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../store/store";

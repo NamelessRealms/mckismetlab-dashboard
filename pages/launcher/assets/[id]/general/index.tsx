@@ -1,5 +1,5 @@
 import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../../../components/layout/dashboardLayout/DashboardLayout";
 import styles from "./General.module.scss";
 import { v4 as uuidV4 } from "uuid";
 import { GetServerSideProps } from "next";
@@ -428,9 +428,9 @@ export default function LauncherAssetsGeneral(props: IProps) {
 
 LauncherAssetsGeneral.getLayout = (page: ReactElement) => {
     return (
-        <PanelLayout>
+        <DashboardLayout>
             <LauncherLayout>{page}</LauncherLayout>
-        </PanelLayout>
+        </DashboardLayout>
     );
 }
 

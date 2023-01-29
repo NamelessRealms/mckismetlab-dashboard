@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import DropMenu from "../../../../../components/dropMenu/DropMenu";
 import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../../../components/layout/dashboardLayout/DashboardLayout";
 import ModalChangeSave from "../../../../../components/modalChangeSave/ModalChangeSave";
 import { ILauncherAssetServerJava, ILauncherAssetServeSystemJavaType } from "../../../../../interfaces/ILauncherAssets";
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
@@ -154,9 +154,9 @@ export default function LauncherAssetsJava() {
 
 LauncherAssetsJava.getLayout = (page: ReactElement) => {
     return (
-        <PanelLayout>
+        <DashboardLayout>
             <LauncherLayout>{page}</LauncherLayout>
-        </PanelLayout>
+        </DashboardLayout>
     );
 }
 

@@ -5,6 +5,7 @@ declare module "next-auth" {
 
     interface Session {
         isAdmin?: boolean;
+        userId: string;
     }
 }
 
@@ -12,5 +13,6 @@ declare module "next-auth/jwt" {
 
     interface JWT {
         isAdmin?: boolean;
+        userId: string;
     }
 }

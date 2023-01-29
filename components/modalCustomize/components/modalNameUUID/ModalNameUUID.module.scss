@@ -1,0 +1,25 @@
+.modalCustomizeTitleDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .modalCustomizeTitleDiv_l {
+        .modalCustomizeTitle {
+            color: #fff;
+            font-size: 22px;
+        }
+    }
+    
+    .modalCustomizeTitleDiv_r {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.modalCustomizeButton {
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}

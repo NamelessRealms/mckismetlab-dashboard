@@ -1,0 +1,14 @@
+[
+    {
+        "id": "mckismetlab-main-server",
+        "name": "主服模組包伺服器"
+    },
+    {
+        "id": "mckismetlab-deputy-server",
+        "name": "副服模組包伺服器"
+    },
+    {
+        "id": "mckismetlab-test-server",
+        "name": "測試伺服器"
+    }
+]

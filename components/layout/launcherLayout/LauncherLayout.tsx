@@ -22,7 +22,8 @@ export default function LauncherLayout(props: IProps) {
     const dispatch = useAppDispatch();
     const launcherAssets = useAppSelector((state) => state.launcherAssets);
     const launcherAssetServer = launcherAssets.servers;
-    const [secretNavbar, setSecretNavbar] = useState<INavbarType>(getINavbarType(router.pathname.split("/")[5]));
+    const localLauncherLayoutNavbar = localStorage.getItem("LauncherLayoutNavbar");
+    const [secretNavbar, setSecretNavbar] = useState<INavbarType>(localLauncherLayoutNavbar !== null ? localLauncherLayoutNavbar as INavbarType : "general");
     const [selectServer, setSelectServer] = useState<string>(serverId);
 
     const [releaseModalCustomizeState, setReleaseModalCustomizeState] = useState<boolean>(false);
@@ -36,20 +37,20 @@ export default function LauncherLayout(props: IProps) {
         setReleaseModalCustomizeSelectServerData(newReleaseModalCustomizeSelectServerData);
     }, [releaseModalCustomizeSelectServer, releaseModalCustomizeState]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        // TODO
-        const routeChangeComplete = (pathname: string) => {
-            const pathnameSplit = pathname.split("/")[5];
-            setSecretNavbar(getINavbarType(pathnameSplit));
-        }
+    //     // TODO
+    //     const routeChangeComplete = (pathname: string) => {
+    //         const pathnameSplit = pathname.split("/")[5];
+    //         setSecretNavbar(getINavbarType(pathnameSplit));
+    //     }
 
-        router.events.on("routeChangeComplete", routeChangeComplete);
+    //     router.events.on("routeChangeComplete", routeChangeComplete);
 
-        return () => {
-            router.events.off("routeChangeComplete", routeChangeComplete);
-        }
-    }, []);
+    //     return () => {
+    //         router.events.off("routeChangeComplete", routeChangeComplete);
+    //     }
+    // }, []);
 
     useEffect(() => {
         if (selectServer === undefined) return; // TODO
@@ -67,8 +68,9 @@ export default function LauncherLayout(props: IProps) {
         getApiLauncherAssetServer();
     }, []);
 
-    const onNavbarClick = (rootLink: string, linkTo: string) => {
-        // setSecretNavbar(id);
+    const onNavbarClick = (id: INavbarType, rootLink: string, linkTo: string) => {
+        localStorage.setItem("LauncherLayoutNavbar", id);
+        setSecretNavbar(id);
         router.push(`${rootLink}/${serverId}${linkTo}`);
     }
 
@@ -296,7 +298,7 @@ export default function LauncherLayout(props: IProps) {
                                 <div
                                     className={`${styles.link} ${nav.id === secretNavbar ? styles.linkHover : ""}`}
                                     key={uuidV4()}
-                                    onClick={() => onNavbarClick(nav.rootLink, nav.linkTo)}
+                                    onClick={() => onNavbarClick(nav.id, nav.rootLink, nav.linkTo)}
                                 >
                                     <h1 className={`${styles.linkText} m-0`}>{nav.title}</h1>
                                 </div>
@@ -325,30 +327,7 @@ export default function LauncherLayout(props: IProps) {
     );
 }
 
-function getINavbarType(id: string): INavbarType {
-    switch (id) {
-        case "java":
-            return INavbarType.JAVA;
-        case "module":
-            return INavbarType.MODULE;
-        case "loader":
-            return INavbarType.LOADER;
-        case "modpack":
-            return INavbarType.MODPACK;
-        case "general":
-        default:
-            return INavbarType.GENERAL;
-
-    }
-}
-
-enum INavbarType {
-    GENERAL = "general",
-    MODPACK = "modpack",
-    LOADER = "loader",
-    MODULE = "module",
-    JAVA = "java"
-}
+type INavbarType = "general" | "modpack" | "loader" | "module" | "java";
 
 interface INavbar {
     id: INavbarType;
@@ -359,31 +338,31 @@ interface INavbar {
 
 const navbar: Array<INavbar> = [
     {
-        id: INavbarType.GENERAL,
+        id: "general",
         title: "一般",
         rootLink: "/launcher/assets",
         linkTo: "/general"
     },
     {
-        id: INavbarType.MODPACK,
+        id: "modpack",
         title: "模組包",
         rootLink: "/launcher/assets",
         linkTo: "/modpack"
     },
     {
-        id: INavbarType.LOADER,
+        id: "loader",
         title: "模組加載器",
         rootLink: "/launcher/assets",
         linkTo: "/loader"
     },
     {
-        id: INavbarType.MODULE,
+        id: "module",
         title: "模組",
         rootLink: "/launcher/assets",
         linkTo: "/module"
     },
     {
-        id: INavbarType.JAVA,
+        id: "java",
         title: "Java",
         rootLink: "/launcher/assets",
         linkTo: "/java"

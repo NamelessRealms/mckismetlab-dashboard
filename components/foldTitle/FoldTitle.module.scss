@@ -1,0 +1,96 @@
+.foldTitleDiv {
+    background-color: var(--dark-02-color);
+    box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    width: 100%;
+
+    .foldTitleHr {
+        margin: 0 0 4px 0;
+    }
+
+    .foldTitleTitleDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        cursor: pointer;
+
+        .foldTitleTitle {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .foldTitleDescription {
+            color: var(--white-01-color);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .foldTitleArrowImgDiv {
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            // transition: all 0.15s ease-in-out;
+
+            // &:hover {
+            //     background-color: rgba(255, 255, 255, 0.2);
+            // }
+
+            .foldTitleArrowImg {
+                width: 20px;
+                height: auto;
+                color: var(--white-02-color);
+                transition: all 0.1s ease;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .foldTitleContainer {
+        padding: 20px;
+        overflow: hidden;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .foldTitleContainerTopFoldAnimation {
+        animation-name: topFold;
+        animation-duration: 0.25s; 
+        animation-fill-mode: forwards;
+    }
+
+    .foldTitleContainerBottomFoldAnimation {
+        animation-name: bottomFold;
+        animation-duration: 0.25s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes topFold {
+    from {
+        height: auto;
+        opacity: 1;
+    }
+    to {
+        height: 0;
+        padding: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes bottomFold {
+    from {
+        height: 0;
+        padding: 0;
+        opacity: 0;
+    }
+    to {
+        height: auto;
+        opacity: 1;
+        padding: 20px;
+    }
+}

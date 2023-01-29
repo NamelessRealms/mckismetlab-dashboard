@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Spinner } from "react-bootstrap";
-import PanelLayout from "../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../components/layout/dashboardLayout/DashboardLayout";
 
 export default function Dashboard() {
   return (
@@ -13,5 +13,7 @@ export default function Dashboard() {
 }
 
 Dashboard.getLayout = (page: ReactElement) => {
-  return <PanelLayout>{page}</PanelLayout>;
+  return <DashboardLayout>{page}</DashboardLayout>;
 }
+
+Dashboard.requireAuth = true;

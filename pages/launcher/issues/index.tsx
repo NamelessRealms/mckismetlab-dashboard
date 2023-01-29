@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import PanelLayout from "../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../components/layout/dashboardLayout/DashboardLayout";
 
 export default function LauncherIssues() {
 
@@ -11,5 +11,7 @@ export default function LauncherIssues() {
 }
 
 LauncherIssues.getLayout = (page: ReactElement) => {
-    return <PanelLayout>{page}</PanelLayout>;
+    return <DashboardLayout>{page}</DashboardLayout>;
 }
+
+LauncherIssues.requireAuth = true;

@@ -1,4 +1,4 @@
-import PanelLayout from "../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../components/layout/dashboardLayout/DashboardLayout";
 import ILauncherAssets from "../../../interfaces/ILauncherAssets";
 import styles from "./LauncherAssets.module.scss";
 import { ReactElement, useEffect } from "react";
@@ -23,6 +23,7 @@ export default function LauncherAssets(props: IProps) {
     const dispatch = useAppDispatch();
 
     const onClick = (id: string) => {
+        localStorage.removeItem("LauncherLayoutNavbar");
         router.push(`/launcher/assets/${id}/general`);
     }
 
@@ -77,7 +78,7 @@ export default function LauncherAssets(props: IProps) {
 }
 
 LauncherAssets.getLayout = (page: ReactElement) => {
-    return <PanelLayout>{page}</PanelLayout>;
+    return <DashboardLayout>{page}</DashboardLayout>;
 }
 
 LauncherAssets.requireAuth = true;

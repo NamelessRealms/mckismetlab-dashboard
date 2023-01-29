@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE: mckismetlab-panel
+      IMAGE: mckismetlab-dashboard
 
     steps:
 
@@ -51,6 +51,6 @@ jobs:
     - name: Invoke deployment hook
       uses: distributhor/workflow-webhook@v2
       env:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}/mckismetlab-panel-build-webhook
+        webhook_url: ${{ secrets.WEBHOOK_URL }}/mckismetlab-dashboard-build-webhook
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         webhook_auth: ${{ secrets.WEBHOOK_USERNAME }}:${{ secrets.WEBHOOK_PASSWORD }}

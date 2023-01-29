@@ -6,7 +6,7 @@ import { IoAddSharp } from "react-icons/io5";
 import { BiEdit } from "react-icons/bi";
 import DisableBlock from "../../../../../components/disableBlock/DisableBlock";
 import LauncherLayout from "../../../../../components/layout/launcherLayout/LauncherLayout";
-import PanelLayout from "../../../../../components/layout/panelLayout/PanelLayout";
+import DashboardLayout from "../../../../../components/layout/dashboardLayout/DashboardLayout";
 import { ILauncherAssetServerModule, ILauncherAssetServerModulesAction, ILauncherAssetServerModuleType } from "../../../../../interfaces/ILauncherAssets";
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import styles from "./Module.module.scss";
@@ -287,9 +287,9 @@ export default function LauncherAssetsModule() {
 
 LauncherAssetsModule.getLayout = (page: ReactElement) => {
     return (
-        <PanelLayout>
+        <DashboardLayout>
             <LauncherLayout>{page}</LauncherLayout>
-        </PanelLayout>
+        </DashboardLayout>
     );
 }
 
