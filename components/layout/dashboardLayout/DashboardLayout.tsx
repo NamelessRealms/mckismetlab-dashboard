@@ -16,8 +16,17 @@ export default function DashboardLayout(props: IProps) {
 
     const router = useRouter();
     const { data: session } = useSession();
-    const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
-    const [secretMenu, setSecretMenu] = useState<IMenusType>(localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard");
+    // const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
+    // const [secretMenu, setSecretMenu] = useState<IMenusType>(localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard");
+
+    const [secretMenu, setSecretMenu] = useState<IMenusType>("dashboard");
+
+    useEffect(() => {
+        setSecretMenu(() => {
+            const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
+            return localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard";
+        });
+    }, []);
 
     // useEffect(() => {
 

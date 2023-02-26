@@ -21,7 +21,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             // }),
             DiscordProvider({
                 clientId: discordId,
-                clientSecret: discordSecret,
+                clientSecret: discordSecret
             })
         ],
         secret: process.env.NEXTAUTH_SECRET,
