@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE: mckismetlab-panel
+      IMAGE: mckismetlab-dashboard
 
     steps:
 
