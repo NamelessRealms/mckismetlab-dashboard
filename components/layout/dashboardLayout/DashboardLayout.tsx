@@ -16,17 +16,8 @@ export default function DashboardLayout(props: IProps) {
 
     const router = useRouter();
     const { data: session } = useSession();
-    // const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
-    // const [secretMenu, setSecretMenu] = useState<IMenusType>(localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard");
-
-    const [secretMenu, setSecretMenu] = useState<IMenusType>("dashboard");
-
-    useEffect(() => {
-        setSecretMenu(() => {
-            const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
-            return localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard";
-        });
-    }, []);
+    const localSecretMenu = localStorage.getItem("DashboardLayoutMenu");
+    const [secretMenu, setSecretMenu] = useState<IMenusType>(localSecretMenu !== null ? localSecretMenu as IMenusType : "dashboard");
 
     // useEffect(() => {
 
@@ -68,7 +59,7 @@ export default function DashboardLayout(props: IProps) {
                 <div className={`${styles.leftPanelLayout} col-2 m-0`}>
 
                     <div className={`${styles.logoTitleImg}`}>
-                        <Image
+                        {/* <Image
                             src={mckismetlabLogoTitleImg}
                             alt="Logo Title"
                             onClick={() => {
@@ -76,7 +67,7 @@ export default function DashboardLayout(props: IProps) {
                                 setSecretMenu("dashboard");
                                 router.push("/");
                             }}
-                        />
+                        /> */}
                     </div>
 
                     <div className={styles.menus}>

@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
+import Utils from "../../../../../utils/Utils";
 
 export default async function MklSignIn(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -10,8 +11,8 @@ export default async function MklSignIn(req: NextApiRequest, res: NextApiRespons
             throw new Error("Login api server failure.");
         }
 
-        const apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://mckismetlab.net/api";
-        const response = await fetch(apiServerUrl + "/oauth2/token", {
+        // const apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://mckismetlab.net/api";
+        const response = await fetch(Utils.getApiUri() + "/oauth2/token", {
             method: "POST",
             mode: "no-cors",
             headers: {

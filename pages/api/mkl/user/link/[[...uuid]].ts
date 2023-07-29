@@ -1,13 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import Utils from "../../../../../utils/Utils";
 
-export interface ISkinCapeProfiles {
-    id: string;
-    name: string;
-    properties: Array<{
-        name: string;
-        value: string;
-        signature: string;
-    }>;
+export interface IUserLinkProfile {
+    id: number;
+    minecraft_uuid: string;
+    discord_id: string;
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -21,13 +18,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 throw new Error("playerUuids not array.");
             }
 
-            const playerProfiles = new Array<ISkinCapeProfiles | null>();
+            const playerUserLinkProfiles = new Array<IUserLinkProfile | null>();
 
             for(let playerUuid of playerUuids) {
-                playerProfiles.push(await getPlayerProfile(playerUuid));
+                playerUserLinkProfiles.push(await getPlayerUserLinkProfile(playerUuid));
             }
 
-            return res.status(200).json(playerProfiles);
+            return res.status(200).json(playerUserLinkProfiles);
 
         } else if (req.method === "GET") {
 
@@ -40,9 +37,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 });
             }
 
-            const playerProfile = await getPlayerProfile(playerUUID);
+            const playerUserLinkProfiles = await getPlayerUserLinkProfile(playerUUID);
 
-            return res.status(200).json(playerProfile);
+            return res.status(200).json(playerUserLinkProfiles);
         }
 
         return res.status(400).end();
@@ -55,16 +52,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 }
 
-async function getPlayerProfile(playerUuid: string): Promise<ISkinCapeProfiles | null> {
+async function getPlayerUserLinkProfile(playerUuid: string): Promise<IUserLinkProfile | null> {
     try {
-        const getPlayerNameUrl = `https://sessionserver.mojang.com/session/minecraft/profile/${playerUuid}`;
-        const playerProfileNamesResponse = await fetch(getPlayerNameUrl);
+        const playerUserLinkProfileResponse = await fetch(Utils.getApiUri() + "/user/userlink/" + playerUuid);
 
-        if (!playerProfileNamesResponse.ok) {
+        if (!playerUserLinkProfileResponse.ok) {
             return null;
         }
 
-        return await playerProfileNamesResponse.json();
+        return await playerUserLinkProfileResponse.json();
     } catch (error) {
         return null;
     }

@@ -19,6 +19,7 @@ import TextEditInput from "../../../../components/textEditInput/TextEditInput";
 import React from "react";
 import SpinnerCenter from "../../../../components/spinnerCenter/SpinnerCenter";
 import ModalPlayerInfo from "../../../../components/modalCustomize/components/modalPlayerInfo/ModalPlayerInfo";
+import { ISkinCapeProfiles } from "../../../api/minecraft/user/profile/names/[[...uuid]]";
 
 export default function ServerManageWhitelist() {
 
@@ -50,6 +51,9 @@ export default function ServerManageWhitelist() {
     const [totalWhitelistNumber, setTotalWhitelistNumber] = useState<number>(60);
     const [totalWhitelistNumberInput, setTotalWhitelistNumberInput] = useState<number>(totalWhitelistNumber);
 
+    // * ModalPlayerInfo State
+    const [modalPlayerInfoState, setModalPlayerInfoState] = useState<{ open: boolean, uuid: string | null }>({ open: false, uuid: null });
+
     const fetchWhitelistUsers = async (serverId: string) => {
 
         const whitelistUsersResponse = await fetch(`${ApiService.apiServerUrl}/whitelist/serverWhitelist/${serverId}`);
@@ -77,22 +81,20 @@ export default function ServerManageWhitelist() {
             return;
         }
 
-        const playerProfiles = await playerProfilesResponse.json() as Array<{ uuid: string; names: Array<{ changedToAt: number; name: string }> | null }>;
+        const playerProfiles: Array<ISkinCapeProfiles> = await playerProfilesResponse.json();
 
         for (let playerProfile of playerProfiles) {
 
-            if (playerProfile.names === null) continue;
-            const playerProfileNamePop = playerProfile.names.pop();
-            if (playerProfileNamePop === undefined) continue;
+            if (playerProfile.name === null) continue;
 
-            const findSponsorUser = sponsorUsers.find((sponsorUser) => sponsorUser.minecraft_uuid === playerProfile.uuid);
+            const findSponsorUser = sponsorUsers.find((sponsorUser) => sponsorUser.minecraft_uuid === playerProfile.id);
 
             fetchWhitelistUsers.push({
                 id: uuidV4(),
                 whitelistUserTextEditInputState: false,
                 display: true,
-                name: playerProfileNamePop.name,
-                uuid: playerProfile.uuid,
+                name: playerProfile.name,
+                uuid: playerProfile.id,
                 isSponsor: findSponsorUser !== undefined
             });
         }
@@ -170,10 +172,17 @@ export default function ServerManageWhitelist() {
                 }}
             />
 
-            <ModalPlayerInfo
-                open={true}
-                playerUUID="93ea0589ec754cad8619995164382e8d"
-            />
+            {
+                modalPlayerInfoState.open
+                    ?
+                    <ModalPlayerInfo
+                        open={true}
+                        playerUUID={modalPlayerInfoState.uuid}
+                        onClose={() => setModalPlayerInfoState({ open: false, uuid: null })}
+                    />
+                    :
+                    null
+            }
 
             <div className={styles.serverManageWhitelist}>
 
@@ -226,6 +235,9 @@ export default function ServerManageWhitelist() {
                                                             whitelistUser={whitelistUser}
                                                             onChange={changeWhitelistUserTextEditInput}
                                                             onDeleteItemClick={() => deleteWhitelistUser(whitelistUser.id)}
+                                                            onClick={() => {
+                                                                setModalPlayerInfoState({ open: true, uuid: whitelistUser.uuid });
+                                                            }}
                                                         />
                                                     ))
                                                     :
@@ -335,6 +347,7 @@ interface IWhitelistUserJSXElementProps {
     whitelistUser: IWhitelistUser;
     onChange?: (value: IWhitelistUser) => void;
     onDeleteItemClick?: () => void;
+    onClick?: () => void;
     style?: CSSProperties;
 }
 
@@ -353,7 +366,7 @@ function WhitelistUserJSXElement(props: IWhitelistUserJSXElementProps) {
     }
 
     return (
-        <div className={styles.whitelistUserDiv} style={props.style}>
+        <div className={styles.whitelistUserDiv} style={props.style} onClick={props.onClick}>
 
             <div className={styles.whitelistUserLeft}>
 

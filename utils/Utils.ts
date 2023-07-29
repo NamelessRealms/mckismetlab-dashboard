@@ -3,6 +3,10 @@ import { ILauncherAssetServer, ILauncherAssetServerMinecraftType } from "../inte
 
 export default class Utils {
 
+    public static getApiUri(): string {
+        return process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://mckismetlab.net/api";
+    }
+
     public static copyObjectArray<Type>(value: Type): Type {
         return JSON.parse(JSON.stringify(value));
     }

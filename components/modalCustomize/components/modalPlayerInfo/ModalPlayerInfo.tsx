@@ -5,7 +5,6 @@ import ModalCustomize from "../../ModalCustomize";
 import styles from "./modalPlayerInfo.module.scss";
 import { CgClose } from "react-icons/cg";
 import * as skinview3d from "skinview3d";
-import Image from "next/image";
 import steveSkin3d from "../../../../assets/images/skin/steve_skin_3d.png";
 import { IoCheckboxOutline, IoReload } from "react-icons/io5";
 import TextStateLights from "../../../textStateLights/TextStateLights";
@@ -19,11 +18,13 @@ import minecraftServersImage01 from "../../../../assets/images/background/server
 import minecraftServersImage02 from "../../../../assets/images/background/server_2.png";
 import minecraftServersImage03 from "../../../../assets/images/background/server_2.png";
 import { GrHistory } from "react-icons/gr";
-import Utils from "../../../../utils/Utils";
 import React from "react";
 import SpinnerCenter from "../../../spinnerCenter/SpinnerCenter";
 import User, { IDiscordMember } from "../../../../utils/User";
 import DiscordRole, { DiscordGuildRole } from "../../../../utils/Discord/DiscordRole";
+import { ISkinCapeProfiles } from "../../../../pages/api/minecraft/user/profile/names/[[...uuid]]";
+import Image from "next/image"
+import { IUserLinkProfile } from "../../../../pages/api/mkl/user/link/[[...uuid]]";
 
 interface IMinecraftPlayerTexture {
     uuid: string;
@@ -35,7 +36,8 @@ interface IMinecraftPlayerTexture {
 
 interface IProps {
     open: boolean;
-    playerUUID: string;
+    playerUUID: string | null;
+    onClose?: () => void;
 }
 
 export default function ModalPlayerInfo(props: IProps) {
@@ -47,7 +49,11 @@ export default function ModalPlayerInfo(props: IProps) {
     const [playerNamesHistoryBoxState, setPlayerNamesHistoryBoxState] = useState<boolean>(false);
 
     const [playerServerNames, setPlayerServerNames] = useState<Array<{ id: string; name: string; }> | null>([]);
-    const [playerProfileNames, setPlayerProfileNames] = useState<{ nowName: string; historyNames: Array<{ changedToAt: number; name: string; }> } | null>(null);
+
+    // ! (已廢除) https://help.minecraft.net/hc/en-us/articles/8969841895693-Username-History-API-Removal-FAQ-
+    // const [playerProfileNames, setPlayerProfileNames] = useState<{ nowName: string; historyNames: Array<{ changedToAt: number; name: string; }> } | null>(null);
+    const [playerProfile, setPlayerProfile] = useState<ISkinCapeProfiles | null>(null);
+
     const [userDiscordProfile, setUserDiscordProfile] = useState<IDiscordMember | null>(null);
 
     // TODO:
@@ -55,7 +61,11 @@ export default function ModalPlayerInfo(props: IProps) {
 
     const fetchPlayerData = async () => {
 
-        const discordGuildMember = await User.getDiscordGuildMember(process.env.mcKismetLabDiscordGuildId as string, "177388464948510720");
+        const playerUserLinkProfilesResponse = await ky(`/dashboard/api/mkl/user/link/${props.playerUUID}`);
+        if (!playerUserLinkProfilesResponse.ok) { setInitialFetchDataState("error"); return; }
+        const playerUserLinkProfile: IUserLinkProfile = await playerUserLinkProfilesResponse.json();
+
+        const discordGuildMember = await User.getDiscordGuildMember(process.env.mcKismetLabDiscordGuildId as string, playerUserLinkProfile.discord_id);
         if (discordGuildMember !== null) setUserDiscordProfile(discordGuildMember);
         const discordGuildRoles = await DiscordRole.getDiscordGuildRoles(process.env.mcKismetLabDiscordGuildId as string);
         if (discordGuildRoles !== null && discordGuildMember !== null) {
@@ -70,23 +80,9 @@ export default function ModalPlayerInfo(props: IProps) {
         }
 
         const playerProfilesResponse = await ky(`/dashboard/api/minecraft/user/profile/names/${props.playerUUID}`);
-
-        if (!playerProfilesResponse.ok) {
-            setInitialFetchDataState("error");
-            return;
-        }
-
-        const playerProfile: { uuid: string; names: Array<{ changedToAt: number; name: string }> | null } = await playerProfilesResponse.json();
-
-        if (playerProfile.names !== null) {
-            const nowName = playerProfile.names.pop();
-            if (nowName !== undefined) {
-                setPlayerProfileNames({
-                    nowName: nowName.name,
-                    historyNames: playerProfile.names
-                });
-            }
-        }
+        if (!playerProfilesResponse.ok) { setInitialFetchDataState("error"); return; }
+        const playerProfile = await playerProfilesResponse.json();
+        setPlayerProfile(playerProfile);
 
         setInitialFetchDataState("complete");
     }
@@ -136,11 +132,14 @@ export default function ModalPlayerInfo(props: IProps) {
 
                     <div className={styles.modalPlayerTitleLeft}>
                         <img className={styles.modalPlayerHeadImg} src={`https://crafatar.com/renders/head/${props.playerUUID}?overlay`} alt="Player Head" />
-                        <h1 className={styles.modalPlayerNameTitle}>{playerProfileNames !== null ? playerProfileNames.nowName : "........"}</h1>
+                        <h1 className={styles.modalPlayerNameTitle}>{playerProfile !== null ? playerProfile.name : "........"}</h1>
                     </div>
 
                     <div className={styles.modalPlayerTitleRight}>
-                        <CgClose className={styles.modalPlayerTitleCloseIcon} onClick={() => setModalCustomizeState(false)} />
+                        <CgClose className={styles.modalPlayerTitleCloseIcon} onClick={() => {
+                                if(props.onClose !== undefined) props.onClose();
+                            // setModalCustomizeState(false);
+                        }} />
                     </div>
 
                 </div>
@@ -156,8 +155,22 @@ export default function ModalPlayerInfo(props: IProps) {
 
                             <div className={styles.modalPlayerInfoLeft}>
 
-                                <div className={styles.modalPlayer3dView} style={!playerNamesHistoryBoxState ? { padding: "10px 15px" } : { display: "block" }}>
+                                <div className={styles.modalPlayer3dView} style={!playerNamesHistoryBoxState ? { padding: "10px 0px" } : { display: "block" }}>
                                     {
+                                        process.env.NODE_ENV === "production"
+                                            ?
+                                            <canvas id="skin_container" />
+                                            :
+                                            <Image
+                                                width={120}
+                                                height={270}
+                                                src={steveSkin3d}
+                                                alt="Player Skin"
+                                            />
+                                    }
+
+                                    {/* (已廢除) https://help.minecraft.net/hc/en-us/articles/8969841895693-Username-History-API-Removal-FAQ- */ }
+                                    {/* {
                                         playerNamesHistoryBoxState
                                             ?
                                             <div className={styles.modalPlayerNamesHistory}>
@@ -199,7 +212,7 @@ export default function ModalPlayerInfo(props: IProps) {
                                                     src={steveSkin3d}
                                                     alt="Player Skin"
                                                 />
-                                    }
+                                    } */}
                                 </div>
 
                                 <div className={styles.modalPlayerInfoToolsButtonDiv}>
@@ -210,7 +223,8 @@ export default function ModalPlayerInfo(props: IProps) {
                                         </div>
                                     </Tooltips>
 
-                                    <Tooltips title="Minecraft 改名歷史">
+                                    {/* (已廢除) https://help.minecraft.net/hc/en-us/articles/8969841895693-Username-History-API-Removal-FAQ- */}
+                                    {/* <Tooltips title="Minecraft 改名歷史">
                                         <div
                                             className={styles.modalPlayerInfoToolsIconDiv}
                                             style={playerNamesHistoryBoxState ? { backgroundColor: "rgba(255, 255, 255, 0.1)" } : {}}
@@ -218,7 +232,7 @@ export default function ModalPlayerInfo(props: IProps) {
                                         >
                                             <GrHistory className={`${styles.modalPlayerInfoToolsIcon_2} ${playerNamesHistoryBoxState ? styles.modalPlayerInfoToolsIcon_2_hover : null}`} />
                                         </div>
-                                    </Tooltips>
+                                    </Tooltips> */}
 
                                 </div>
 
@@ -451,6 +465,7 @@ function GetServerBanner(props: IGetServerBannerElementProps) {
                             src={serverImages[Math.floor(Math.random() * 2)]}
                             layout="fill"
                             objectFit="cover"
+                            alt=""
                         />
                     </div>
                     : null

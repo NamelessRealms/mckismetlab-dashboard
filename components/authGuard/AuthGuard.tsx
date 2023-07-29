@@ -33,7 +33,7 @@ export default function AuthGuard(props: IProps) {
         return null;
     }
 
-    if(!session?.isAdmin) {
+    if(session?.isAdmin !== undefined && !session?.isAdmin) {
         router.push("/");
         return null;
     }
