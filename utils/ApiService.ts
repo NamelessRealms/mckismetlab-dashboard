@@ -11,7 +11,7 @@ interface IPanelUser {
 
 export default class ApiService {
 
-    public static apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://mckismetlab.net/api"
+    public static apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://namelessrealms.com/api"
 
     private static _mojangUrl = "https://api.mojang.com/users/profiles";
 

@@ -10,7 +10,7 @@ export default async function MklSignIn(req: NextApiRequest, res: NextApiRespons
             throw new Error("Login api server failure.");
         }
 
-        const apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://mckismetlab.net/api";
+        const apiServerUrl = process.env.NODE_ENV === "development" ? "http://localhost:8030" : "https://namelessrealms.com/api";
         const response = await fetch(apiServerUrl + "/oauth2/token", {
             method: "POST",
             mode: "no-cors",
